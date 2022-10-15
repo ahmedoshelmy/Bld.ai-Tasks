@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count, Case, When, IntegerField
 
 
 # Create your models here.
@@ -13,3 +14,6 @@ class Artist(models.Model):
     class Meta:
         ordering = ['stage_name']
 
+    @property
+    def album_count(self):
+        return self.album_set.filter(approved=True).count()
