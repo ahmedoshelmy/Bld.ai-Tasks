@@ -15,5 +15,5 @@ class Artist(models.Model):
         ordering = ['stage_name']
 
     @property
-    def album_count(self):
+    def x(self):
         return self.album_set.filter(approved=True).count()
