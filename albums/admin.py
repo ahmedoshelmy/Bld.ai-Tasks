@@ -7,5 +7,4 @@ from .forms import *
 
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
-    readonly_fields = ['creation_date']
     form = AlbumForm
