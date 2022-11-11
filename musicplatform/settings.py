@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     'artist',
     'albums',
     'imagekit',
-    'rest_framework'
+    'rest_framework',
+    'authentication',
+    'users',
+    'django_extensions',
+    'knox'
 ]
 
 MIDDLEWARE = [
@@ -73,6 +77,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'musicplatform.wsgi.application'
 
+AUTH_USER_MODEL = "users.User"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

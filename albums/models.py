@@ -21,7 +21,7 @@ class Album(TimeStampedModel):
     cost = models.DecimalField(decimal_places=2, null=False, max_digits=5)
     author = models.ForeignKey(Artist, on_delete=models.CASCADE)
     approved = models.BooleanField(default=False)
-    song = models.ForeignKey(Song, on_delete=models.CASCADE)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name

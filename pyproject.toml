@@ -15,6 +15,10 @@ django-filter = "^22.1"
 django-model-utils = "^4.2.0"
 pillow = "^9.3.0"
 django-imagekit = "^4.1.0"
+knox = "^0.1.14"
+cryptography = "^38.0.3"
+boto3 = "^1.26.7"
+django-rest-knox = "^4.2.0"
 
 
 [build-system]
