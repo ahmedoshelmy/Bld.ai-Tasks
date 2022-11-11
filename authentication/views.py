@@ -19,7 +19,7 @@ class Register(generics.GenericAPIView):
         return Response({
             "users": UserSerializer(user, context=self.get_serializer_context()).data,
             "token": token[1]
-        })
+        }, status=status.HTTP_201_CREATED)
 
 
 class Login(generics.GenericAPIView):
@@ -31,5 +31,5 @@ class Login(generics.GenericAPIView):
         user = serializer.validated_data
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            "token": AuthToken.objects.create(user)[1]
+            "token": AuthToken.objects.create(user)[1] ,
         })
