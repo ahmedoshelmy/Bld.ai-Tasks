@@ -24,6 +24,8 @@ pytest-django = "^4.5.2"
 pilkit = "^2.0"
 celery = "^5.2.7"
 redis = "^4.3.4"
+django-celery-beat = "^2.4.0"
+django-celery-results = "^2.4.0"
 
 
 [build-system]

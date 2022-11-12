@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,7 +44,9 @@ INSTALLED_APPS = [
     'authentication',
     'users',
     'django_extensions',
-    'knox'
+    'knox',
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +133,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 1
 }
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
+CELERY_CONF_BEAT_SCHEDULE = {
+    'check_inactivity_email': {'task': 'albums.tasks.check_inactivity', 'schedule': crontab(hour="*/24"),
+                               'args': (16, 16)}, }
+
+EMAIL_HOST_USER = 'ahmed.helmy@bldai.com'
