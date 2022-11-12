@@ -63,3 +63,10 @@ class AlbumFilterView(ListAPIView):
             return Response(serializer.data)
 
         return self.get_paginated_response(self.paginate_queryset(serializer.data))
+
+    def post(self, request, format=None):
+        serializer = AlbumSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
